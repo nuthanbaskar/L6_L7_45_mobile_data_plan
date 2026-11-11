@@ -1,0 +1,147 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.0, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\nutha\AppData\Local\Programs\Python\Python313-32\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7
+plugins: hypothesis-6.170.15, cov-7.1.0
+collecting ... collected 12 items
+
+test_processor.py::test_overage_charge_matches_plan_rate PASSED          [  8%]
+test_processor.py::test_overage_charge_rejects_invalid_usage PASSED      [ 16%]
+test_processor.py::test_overage_charge_rejects_non_boolean_flags PASSED  [ 25%]
+test_processor.py::test_recharge_allowed_matches_limits PASSED           [ 33%]
+test_processor.py::test_recharge_rejects_negative_amount PASSED          [ 41%]
+test_processor.py::test_recharge_rejects_negative_pending_count PASSED   [ 50%]
+test_processor.py::test_recharge_rejects_invalid_amount PASSED           [ 58%]
+test_processor.py::test_recharge_rejects_non_integer_pending_count PASSED [ 66%]
+test_processor.py::test_validity_status_matches_cutoffs PASSED           [ 75%]
+test_processor.py::test_validity_rejects_boolean_day_counts PASSED       [ 83%]
+test_processor.py::test_validity_rejects_fractional_day_counts PASSED    [ 91%]
+test_processor.py::test_validity_rejects_non_boolean_flags PASSED        [100%]
+============================ Hypothesis Statistics ============================
+
+test_processor.py::test_overage_charge_matches_plan_rate:
+
+  - during generate phase (0.12 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_overage_charge_rejects_invalid_usage:
+
+  - during generate phase (0.08 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_overage_charge_rejects_non_boolean_flags:
+
+  - during generate phase (0.07 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_recharge_allowed_matches_limits:
+
+  - during generate phase (0.08 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_recharge_rejects_negative_amount:
+
+  - during reuse phase (0.00 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 1 passing, 0 failing, and 0 invalid test cases
+
+  - during generate phase (0.05 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 99 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_recharge_rejects_negative_pending_count:
+
+  - during reuse phase (0.00 seconds):
+    - Typical runtimes: ~ 1ms, of which < 1ms in data generation
+    - 1 passing, 0 failing, and 0 invalid test cases
+
+  - during generate phase (0.05 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 99 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_recharge_rejects_invalid_amount:
+
+  - during generate phase (0.07 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_recharge_rejects_non_integer_pending_count:
+
+  - during generate phase (0.07 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_validity_status_matches_cutoffs:
+
+  - during generate phase (0.09 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_validity_rejects_boolean_day_counts:
+
+  - during reuse phase (0.00 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 1 passing, 0 failing, and 0 invalid test cases
+
+  - during generate phase (0.00 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 1 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_validity_rejects_fractional_day_counts:
+
+  - during reuse phase (0.01 seconds):
+    - Typical runtimes: ~ 0-1 ms, of which < 1ms in data generation
+    - 2 passing, 0 failing, and 0 invalid test cases
+
+  - during generate phase (0.05 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 98 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_validity_rejects_non_boolean_flags:
+
+  - during generate phase (0.06 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+============================= 12 passed in 1.20s ==============================

@@ -1,0 +1,266 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.0, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\nutha\AppData\Local\Programs\Python\Python313-32\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7
+plugins: hypothesis-6.170.15, cov-7.1.0
+collecting ... collected 8 items
+
+test_processor.py::test_overage_charge_matches_plan_rate PASSED          [ 12%]
+test_processor.py::test_overage_charge_rejects_invalid_usage FAILED      [ 25%]
+test_processor.py::test_recharge_allowed_matches_limits PASSED           [ 37%]
+test_processor.py::test_recharge_rejects_negative_amount FAILED          [ 50%]
+test_processor.py::test_recharge_rejects_negative_pending_count FAILED   [ 62%]
+test_processor.py::test_validity_status_matches_cutoffs PASSED           [ 75%]
+test_processor.py::test_validity_rejects_boolean_day_counts FAILED       [ 87%]
+test_processor.py::test_validity_rejects_fractional_day_counts FAILED    [100%]
+
+================================== FAILURES ===================================
+__________________ test_overage_charge_rejects_invalid_usage __________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\test_processor.py", line 29, in test_overage_charge_rejects_invalid_usage
+  |     invalid_data=st.one_of(
+  |                ^^^
+  |   File "C:\Users\nutha\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\hypothesis\core.py", line 2334, in wrapped_test
+  |     raise the_error_hypothesis_found
+  | BaseExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\test_processor.py", line 40, in test_overage_charge_rejects_invalid_usage
+    |     overage_charge("basic", invalid_data, False, False)
+    |     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\processor.py", line 7, in overage_charge
+    |     if data_gb < 0:
+    |        ^^^^^^^^^^^
+    | TypeError: '<' not supported between instances of 'str' and 'int'
+    | Failing test case: test_overage_charge_rejects_invalid_usage(
+    |     invalid_data='',
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\test_processor.py:39
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\test_processor.py", line 39, in test_overage_charge_rejects_invalid_usage
+    |     with pytest.raises(ValueError):
+    |          ~~~~~~~~~~~~~^^^^^^^^^^^^
+    |   File "C:\Users\nutha\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\_pytest\raises.py", line 699, in __exit__
+    |     fail(f"DID NOT RAISE {self.expected_exceptions[0].__name__}")
+    |     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\nutha\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\_pytest\outcomes.py", line 162, in __call__
+    |     raise Failed(msg=reason, pytrace=pytrace)
+    | Failed: DID NOT RAISE ValueError
+    | Failing test case: test_overage_charge_rejects_invalid_usage(
+    |     invalid_data=False,
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\test_processor.py:39
+    +------------------------------------
+____________________ test_recharge_rejects_negative_amount ____________________
+
+    @given(amount=st.integers(max_value=-1))
+>   def test_recharge_rejects_negative_amount(amount):
+                   ^^^
+
+test_processor.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+amount = -1
+
+    @given(amount=st.integers(max_value=-1))
+    def test_recharge_rejects_negative_amount(amount):
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+E       Failing test case: test_recharge_rejects_negative_amount(
+E           amount=-1,  # or any other generated value
+E       )
+
+test_processor.py:59: Failed
+________________ test_recharge_rejects_negative_pending_count _________________
+
+    @given(pending_recharges=st.integers(max_value=-1))
+>   def test_recharge_rejects_negative_pending_count(pending_recharges):
+                   ^^^
+
+test_processor.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+pending_recharges = -1
+
+    @given(pending_recharges=st.integers(max_value=-1))
+    def test_recharge_rejects_negative_pending_count(pending_recharges):
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+E       Failing test case: test_recharge_rejects_negative_pending_count(
+E           pending_recharges=-1,  # or any other generated value
+E       )
+
+test_processor.py:65: Failed
+__________________ test_validity_rejects_boolean_day_counts ___________________
+
+    @given(days_left=st.booleans())
+>   def test_validity_rejects_boolean_day_counts(days_left):
+                   ^^^
+
+test_processor.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+days_left = False
+
+    @given(days_left=st.booleans())
+    def test_validity_rejects_boolean_day_counts(days_left):
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+E       Failing test case: test_validity_rejects_boolean_day_counts(
+E           days_left=False,  # or any other generated value
+E       )
+
+test_processor.py:87: Failed
+_________________ test_validity_rejects_fractional_day_counts _________________
+
+    @given(days_left=st.floats(allow_nan=False, allow_infinity=False))
+>   def test_validity_rejects_fractional_day_counts(days_left):
+                   ^^^
+
+test_processor.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+days_left = 0.5
+
+    @given(days_left=st.floats(allow_nan=False, allow_infinity=False))
+    def test_validity_rejects_fractional_day_counts(days_left):
+        if days_left.is_integer():
+            return
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+E       Failing test case: test_validity_rejects_fractional_day_counts(
+E           days_left=0.5,
+E       )
+E       Explanation:
+E           These lines were always and only run by failing test cases:
+E               C:\Users\nutha\OneDrive\Desktop\SELab6\L6_L7_45_mobile_data_plan\Lab 7\test_processor.py:95
+
+test_processor.py:95: Failed
+============================ Hypothesis Statistics ============================
+test_processor.py::test_overage_charge_matches_plan_rate:
+
+  - during generate phase (0.30 seconds):
+    - Typical runtimes: ~ 0-2 ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_overage_charge_rejects_invalid_usage:
+
+  - during generate phase (0.13 seconds):
+    - Typical runtimes: ~ 1-50 ms, of which ~ 0-21 ms in data generation
+    - 3 passing, 7 failing, and 0 invalid test cases
+    - Found 2 distinct errors in this phase
+
+  - during shrink phase (0.04 seconds):
+    - Typical runtimes: ~ 2-6 ms, of which < 1ms in data generation
+    - 0 passing, 3 failing, and 0 invalid test cases
+    - Tried 3 shrinks of which 1 were successful
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_recharge_allowed_matches_limits:
+
+  - during generate phase (0.35 seconds):
+    - Typical runtimes: ~ 1-2 ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_recharge_rejects_negative_amount:
+
+  - during generate phase (0.05 seconds):
+    - Typical runtimes: ~ 1-3 ms, of which < 1ms in data generation
+    - 0 passing, 10 failing, and 0 invalid test cases
+    - Found 1 distinct error in this phase
+
+  - during shrink phase (0.01 seconds):
+    - Typical runtimes: ~ 4ms, of which < 1ms in data generation
+    - 0 passing, 1 failing, and 0 invalid test cases
+    - Tried 1 shrinks of which 0 were successful
+
+  - during explain phase (0.27 seconds):
+    - Typical runtimes: ~ 1-2 ms, of which < 1ms in data generation
+    - 0 passing, 99 failing, and 0 invalid test cases
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_recharge_rejects_negative_pending_count:
+
+  - during generate phase (0.04 seconds):
+    - Typical runtimes: ~ 1-3 ms, of which < 1ms in data generation
+    - 0 passing, 10 failing, and 0 invalid test cases
+    - Found 1 distinct error in this phase
+
+  - during shrink phase (0.01 seconds):
+    - Typical runtimes: ~ 1ms, of which < 1ms in data generation
+    - 0 passing, 1 failing, and 0 invalid test cases
+    - Tried 1 shrinks of which 0 were successful
+
+  - during explain phase (0.33 seconds):
+    - Typical runtimes: ~ 0-3 ms, of which < 1ms in data generation
+    - 0 passing, 100 failing, and 0 invalid test cases
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_validity_status_matches_cutoffs:
+
+  - during generate phase (0.23 seconds):
+    - Typical runtimes: ~ 0-1 ms, of which < 1ms in data generation
+    - 100 passing, 0 failing, and 0 invalid test cases
+
+  - Stopped because settings.max_examples=100
+
+
+test_processor.py::test_validity_rejects_boolean_day_counts:
+
+  - during generate phase (0.02 seconds):
+    - Typical runtimes: ~ 1-2 ms, of which < 1ms in data generation
+    - 0 passing, 2 failing, and 0 invalid test cases
+    - Found 1 distinct error in this phase
+
+  - during shrink phase (0.01 seconds):
+    - Typical runtimes: ~ 2ms, of which < 1ms in data generation
+    - 0 passing, 1 failing, and 0 invalid test cases
+    - Tried 1 shrinks of which 0 were successful
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_validity_rejects_fractional_day_counts:
+
+  - during generate phase (0.06 seconds):
+    - Typical runtimes: ~ 0-3 ms, of which < 1ms in data generation
+    - 7 passing, 5 failing, and 0 invalid test cases
+    - Found 1 distinct error in this phase
+
+  - during shrink phase (0.06 seconds):
+    - Typical runtimes: ~ 1-2 ms, of which < 1ms in data generation
+    - 1 passing, 2 failing, and 0 invalid test cases
+    - Tried 3 shrinks of which 2 were successful
+
+  - Stopped because nothing left to do
+
+
+=========================== short test summary info ===========================
+FAILED test_processor.py::test_overage_charge_rejects_invalid_usage - BaseExc...
+FAILED test_processor.py::test_recharge_rejects_negative_amount - Failed: DID...
+FAILED test_processor.py::test_recharge_rejects_negative_pending_count - Fail...
+FAILED test_processor.py::test_validity_rejects_boolean_day_counts - Failed: ...
+FAILED test_processor.py::test_validity_rejects_fractional_day_counts - Faile...
+========================= 5 failed, 3 passed in 7.71s =========================
